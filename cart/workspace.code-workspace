@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../todo2"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "cart"
+	}
+}

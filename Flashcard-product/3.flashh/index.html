@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- <nav class="nav">
+    <div class="container-nav">
+      <h1 class="logo"><a href="/demo.html">My Website</a></h1>
+      <ul>
+        <li><a href="#" class="current">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </nav> -->
+
+   <div id="flashcard-app" class="container">
+    <div class="flashcard-form">
+      <label for="front">Front
+        <input v-model="newFront" type="text" id="front">
+      </label>
+      <label for="back">Back
+        <input v-on:keypress.enter="addNew" v-model="newBack" type="text" id="back">
+      </label>
+      <button v-on:click="addNew">Add a New Card</button>
+  
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front"> 
+          <p class="card">Architect & Engineer</p>
+        </div>
+        <div class="flip-card-back">
+          <p class="card">Architect & Engineer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

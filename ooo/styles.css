@@ -1,0 +1,25 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.container {
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100vh;
+}
+
+.map-coffe {
+    background-color: rgb(233, 96, 96);
+    position: relative;
+    width: 50vw;
+    left: 50vw;
+}
+
+.bill-order {
+    background-color: rgb(178, 248, 97);
+    /* position: relative; */
+    width: 50vw;
+    height: 100vh;
+    right: 50vw;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    function Mobile(battery, message, inboxs, sentsbox, status) {
+        this.battery = battery;
+        this.message = message;
+        this.inboxs = inboxs;
+        this.sentsbox = sentsbox;
+        this.status = status;
+        this.checkStatus = function() {
+            return this.status
+        }
+        this.turnOnOff = function(status) {
+            if(status == 'on') {
+                return this.status = true
+            }
+            return this.status = false
+        }
+        this.getBattery = function() {
+            let pin = this.battery
+            for(; pin = 100; pin+=5) {
+                return alert('Battery is full')
+            }        
+        }
+        this.getMessage = function() {
+
+        }
+        this.receiveMessage = function(mobile, text) {
+            let count = this.inboxs.length
+            this.inboxs[count] = text;
+            let count1 = mobile.sentsbox.length;
+            mobile.sentsbox[count1] = text; 
+        }
+        
+        // this.viewInbox = f<unction() {
+        //     for(let i=0; i<this.inboxs.length; i++){
+        //         console.log(this.inboxs[i])
+        //     }
+        // }
+    }
+
+    let iPhone = new Mobile();
+    let nokia = new Mobile();
+
+    console.log(iPhone.receiveMessage(nokia, 'Hello'))
+
+</script>
