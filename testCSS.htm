@@ -1,34 +1,108 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="testCSS.css">
-    <title>Document</title>
-    
+  <meta charset="utf-8">
+  <title>TestSidebar Dashboard Template</title>
+  <link rel="stylesheet" href="testCSS.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 </head>
+
 <body>
-    
-    <div class="flass-app">
-        <header>
-            <div class="left-area">
-                <!-- <h3>Flashcard<label for="logo">App</label></h3> -->
-            </div>
-            <div class="right-area">
-                <a href="#"><i></i></a>
-            </div>
-        </header>
 
-        <div class="body-flash-app">
-            <div class="side-bar">
-
-            </div>
-    
-            <div class="content"></div>
-        </div>
+  <input type="checkbox" id="check">
+  <!--header area start-->
+  <header>
+    <label for="check">
+      <i class="fas fa-bars" id="sidebar_btn"></i>
+    </label>
+    <div class="left_area">
+      <h3>Flashcard <span>App</span></h3>
     </div>
+    <div class="right_area">
+      <a href="#" class="logout_btn">Logout</a>
+    </div>
+  </header>
+  <!--header area end-->
+
+  <!--sidebar start-->
+
+  <div class="sidebar">
+    <center>
+      <img
+        src="https://scontent.fdad3-2.fna.fbcdn.net/v/t39.30808-1/243070098_2110311525787502_3556663162934724398_n.jpg?stp=c152.604.1072.1072a_dst-jpg_s320x320&_nc_cat=108&ccb=1-5&_nc_sid=7206a8&_nc_ohc=SCIkdXGSn9cAX8K4slb&_nc_ht=scontent.fdad3-2.fna&oh=00_AT9IsgmeUShwpVH6TPNhjyCOK_YNkxfemCRUAf9p-_iJNg&oe=624D3237"
+        class="profile_image" alt="">
+      <h4>Phúc Thịnh</h4>
+    </center>
+    <div class="sidebar-selector">
+      <a href="#"><i class="fa-solid fa-list"></i><span>All list</span></a>
+      <a href="#"><i class="fa-solid fa-heart"></i><span>Favorite</span></a>
+    </div>
+    <table style="border: 1px; color: white;">
+      <thead>
+        <tr>
+          <td><input type="checkbox"></td>
+          <th>Id</th>
+          <th>Front</th>
+          <th>Back</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>1</td>
+          <td>한국</td>
+          <td>Korea</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>2</td>
+          <td>한국</td>
+          <td>Korea</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>3</td>
+          <td>한국</td>
+          <td>Korea</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <!--sidebar end-->
+
+  <div class="content">
+
+    <div class="flashcard-form">
+      <label for="front">Front
+        <input type="text" id="front">
+      </label>
+      <label for="back">Back
+        <input type="text" id="back">
+      </label>
+      <button onclick="createCard()">Add a New Card</button>
+    </div>
+
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <p>Architect & Engineer</p>
+          <span class="delete-card">X</span>
+        </div>
+        <div class="flip-card-back">
+          <p>Architect & Engineer</p>
+          <span class="delete-card">X</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 
 
 </body>
+
 </html>

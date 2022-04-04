@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Flashcard App</title>
-        <link rel="stylesheet" href="nhap.css">
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard App</title>
+    <link rel="stylesheet" href="Flashcard.css">
+</head>
 
 <body>
 
@@ -22,7 +22,40 @@
                 </a>
             </div>
         </nav>
-        
+
+        <table style="border: 1px; color: black;">
+            <thead>
+              <tr>
+                <td><input type="checkbox"></td>
+                <th>Id</th>
+                <th>Front</th>
+                <th>Back</th>
+              </tr>
+            </thead>
+      
+            <tbody>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>1</td>
+                <td>한국</td>
+                <td>Korea</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>2</td>
+                <td>한국</td>
+                <td>Korea</td>
+              </tr>
+              <tr>
+                <td><input type="checkbox"></td>
+                <td>3</td>
+                <td>한국</td>
+                <td>Korea</td>
+              </tr>
+            </tbody>
+      
+        </table>
+
         <div class="flashcard-app">
             <div class="flashcard-form">
                 <label for="front">Front
@@ -33,18 +66,18 @@
                 </label>
                 <button onclick="createCard()">Add a New Card</button>
             </div>
-            
+
             <div class="container">
-                
+
             </div>
         </div>
-        
+
         <div class="sidebar">
-    
+
         </div>
-        
+
     </div>
-    
+
     <!-- <div class="flip-card">
         <div class="flip-card-inner">
             <div class="flip-card-front">
@@ -58,6 +91,7 @@
         </div>
     </div> -->
 
-    <script src="nhap.js"></script>
+    <script src="Flashcard.js"></script>
 </body>
+
 </html>
