@@ -12,6 +12,9 @@
 <body>
 
     <div class="flashApp">
+
+        <!-- NAV -->
+
         <nav class="nav">
             <div class="nav-logo">
                 <h1 class="logo">Flashcard App!!!</h1>
@@ -23,6 +26,8 @@
             </div>
         </nav>
 
+        <!-- TABLE SHOW ALL LIST -->
+
         <table style="border: 1px; color: black;">
             <thead>
               <tr>
@@ -33,28 +38,13 @@
               </tr>
             </thead>
       
-            <tbody>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>1</td>
-                <td>한국</td>
-                <td>Korea</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>2</td>
-                <td>한국</td>
-                <td>Korea</td>
-              </tr>
-              <tr>
-                <td><input type="checkbox"></td>
-                <td>3</td>
-                <td>한국</td>
-                <td>Korea</td>
-              </tr>
+            <tbody id="tbFlashcard">
+              
             </tbody>
       
         </table>
+
+        <!-- CARD ACTIVE -->
 
         <div class="flashcard-app">
             <div class="flashcard-form">
@@ -68,7 +58,18 @@
             </div>
 
             <div class="container">
-
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <p>Architect & Engineer</p>
+                            <span class="delete-card">X</span>
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Architect & Engineer</p>
+                            <span class="delete-card">X</span>
+                        </div>
+                    </div>
+                </div> 
             </div>
         </div>
 
@@ -78,18 +79,7 @@
 
     </div>
 
-    <!-- <div class="flip-card">
-        <div class="flip-card-inner">
-            <div class="flip-card-front">
-                <p>Architect & Engineer</p>
-                <span class="delete-card">X</span>
-            </div>
-            <div class="flip-card-back">
-                <p>Architect & Engineer</p>
-                <span class="delete-card">X</span>
-            </div>
-        </div>
-    </div> -->
+    
 
     <script src="Flashcard.js"></script>
 </body>

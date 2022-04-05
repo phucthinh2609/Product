@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <title>Document</title>
+    <style>
+        .container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 200px;
+    height: 250px;
+    perspective: 1000px;
+    margin-top: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+    box-shadow: 0 4px 8px 0 rgba(182, 37, 37, 0.2);
+}
+
+/* .flip-card:hover .flip-card-inner {
+transform: scale(1.09);
+} */
+
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 90%;
+    height: 92%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: space-around;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 5%;
+}
+
+.flip-card-front {
+    background-color: #60b6af;
+    color: white;
+
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+.delete-card {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 10px 15px;
+    color: rgba(255, 255, 255, 0.432);
+    transition: all 0.5s ease;
+}
+
+.delete-card:hover {
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <div class="flip-card" id="flip_card_${flashcardNames.id}">
+        <div class="flip-card-inner">
+            <div class="flip-card-front" id="idT">
+                <p>Thinh</p>
+                <span class="delete-card">X</span> 
+            </div>
+            <div class="flip-card-back">
+                <p>Thinh<i class="fa-solid fa-heart"></i></p>    
+                <span class="delete-card" onclick="removeCard">X</span>
+                <a href=""><i class="fa-solid fa-heart"></i></a>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

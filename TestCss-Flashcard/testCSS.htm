@@ -35,38 +35,42 @@
       <h4>Phúc Thịnh</h4>
     </center>
     <div class="sidebar-selector">
-      <a href="#"><i class="fa-solid fa-list"></i><span>All list</span></a>
-      <a href="#"><i class="fa-solid fa-heart"></i><span>Favorite</span></a>
+      <a href="#" onclick="showListCard()"><i class="fa-solid fa-list"></i><span>All list</span></a>
+      <a href="#" onclick="showFavoriteListCard()"><i class="fa-solid fa-heart"></i><span>Favorite</span></a>
     </div>
     <table style="border: 1px; color: white;">
       <thead>
         <tr>
           <td><input type="checkbox"></td>
-          <th>Id</th>
+          <th >Id</th>
           <th>Front</th>
           <th>Back</th>
         </tr>
       </thead>
 
-      <tbody>
+      <tbody id="tbAllList">
+        
+      </tbody>
+
+      <tbody id="tbFavoriteList">
         <tr>
           <td><input type="checkbox"></td>
           <td>1</td>
           <td>한국</td>
-          <td>Korea</td>
-        </tr>
+          <td>Hàn Quốc</td>
+        </tr> 
         <tr>
           <td><input type="checkbox"></td>
           <td>2</td>
-          <td>한국</td>
-          <td>Korea</td>
-        </tr>
+          <td>안녕</td>
+          <td>Xin chào</td>
+        </tr> 
         <tr>
           <td><input type="checkbox"></td>
-          <td>3</td>
-          <td>한국</td>
-          <td>Korea</td>
-        </tr>
+          <td>2</td>
+          <td>안녕</td>
+          <td>Xin chào</td>
+        </tr> 
       </tbody>
 
     </table>
@@ -86,23 +90,17 @@
       <button onclick="createCard()">Add a New Card</button>
     </div>
 
-    <div class="flip-card">
-      <div class="flip-card-inner">
-        <div class="flip-card-front">
-          <p>Architect & Engineer</p>
-          <span class="delete-card">X</span>
-        </div>
-        <div class="flip-card-back">
-          <p>Architect & Engineer</p>
-          <span class="delete-card">X</span>
-        </div>
-      </div>
-    </div>
+    <div class="container">
+      
+    </div> 
+  </div>
+
+    
 
   </div>
 
 
-
+<script src="./testCSS.js"></script>
 </body>
 
 </html>
