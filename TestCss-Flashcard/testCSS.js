@@ -11,10 +11,19 @@ class FlashcardName {
     }
 }
 
+function Card(id, nameFront, nameBack) {
+    this.id = id;
+    this.nameFront = nameFront;
+    this.nameBack = nameBack
+}
+
 const flashcard_key = "FlashCardName";
+const favoritecard_key = "FavoriteCardName";
 
 let flashcardNames = [];
+let favoriteCards = [] 
 
+// LOCAL STORAGE
 
 function init() {
     if (getLocalStorage(flashcard_key) == undefined) {
@@ -36,6 +45,19 @@ function init() {
     }
 }
 
+function initFavoriteCard() {
+    if (getLocalStorage(favoritecard_key) == undefined) {
+        favoriteCards = [
+            new FlashcardName(1, '한국', 'Hàn Quốc'),
+            new FlashcardName(2, '베트남', 'Việt Nam'),
+        ]
+        // localStorage.setItem(flashcard_key, JSON.stringify(flashcardNames))
+        setLocalStorage(favoritecard_key, favoriteCards)
+    } else {
+        favoriteCards = getLocalStorage(favoritecard_key)
+    }
+}
+
 
 function getLocalStorage(key) {
     return JSON.parse(localStorage.getItem(key));
@@ -45,25 +67,27 @@ function setLocalStorage(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+// CARD
+
 function renderFlashcard() {
     let containerFlashcard = document.querySelector('.container');
     // document.querySelector('.flip-card-front').style.background = 'red';
     
-    let htmls = flashcardNames.map(function(flashcardNames) {
+    let htmls = flashcardNames.map(function(flashcardName) {
         return `
-                <div class="flip-card" id="flip_card_${flashcardNames.id}" >
+                <div class="flip-card" id="flip_card_${flashcardName.id}" >
                     <div class="flip-card-inner">
                         <div class="flip-card-front" style="background-color:${getRandomColor()} ;">
-                            <p>${flashcardNames.nameFront}</p>
+                            <p>${flashcardName.nameFront}</p>
                             <span class="delete-card">X</span> 
-                            <p class="heart-card" id="heart-card-front_${flashcardNames.id}" onclick="addFavoriteCard(${flashcardNames.id})"><i class="fa-solid fa-heart" ></i></p>
-                            <p class="red-heart-card d-none" id="red-heart-card-front_${flashcardNames.id}" onclick="removeFavoriteCard(${flashcardNames.id})"><i class="fa-solid fa-heart" ></i></p>
+                            <p class="heart-card" id="heart-card-front_${flashcardName.id}" onclick="addFavoriteCard(${flashcardName.id})"><i class="fa-solid fa-heart" ></i></p>
+                            <p class="red-heart-card d-none" id="red-heart-card-front_${flashcardName.id}" onclick="removeFavoriteCard(${flashcardName.id})"><i class="fa-solid fa-heart" ></i></p>
                         </div>
                         <div class="flip-card-back" style="background-color:${getRandomColor()} ;">
-                            <p>${flashcardNames.nameBack}</p>    
-                            <span class="delete-card"  onclick="removeCard(${flashcardNames.id})">X</span>
-                            <p class="heart-card" id="heart-card-back_${flashcardNames.id}" onclick="addFavoriteCard(${flashcardNames.id})"><i class="fa-solid fa-heart" ></i></p>
-                            <p class="red-heart-card d-none" id="red-heart-card-back_${flashcardNames.id}" onclick="removeFavoriteCard(${flashcardNames.id})"><i class="fa-solid fa-heart" ></i></p>                            
+                            <p>${flashcardName.nameBack}</p>    
+                            <span class="delete-card"  onclick="removeCard(${flashcardName.id})">X</span>
+                            <p class="heart-card" id="heart-card-back_${flashcardName.id}" onclick="addFavoriteCard(${flashcardName.id})"><i class="fa-solid fa-heart" ></i></p>
+                            <p class="red-heart-card d-none" id="red-heart-card-back_${flashcardName.id}" onclick="removeFavoriteCard(${flashcardName.id})"><i class="fa-solid fa-heart" ></i></p>                            
                         </div>
                     </div>
                 </div>        
@@ -72,7 +96,8 @@ function renderFlashcard() {
         })
         
         containerFlashcard.innerHTML = htmls.join("");
-        renderAllList()
+        //renderAllList()
+        // addFavoriteCard()
 }
 
 
@@ -92,7 +117,15 @@ function createCard(){
     setLocalStorage(flashcard_key, flashcardNames)
     clearForm();
     renderFlashcard();
+    renderAllList()
 }
+
+function clearForm() {
+    document.querySelector("#front").value = '';
+    document.querySelector("#back").value = '';
+}
+
+// SET ID
 
 function findLastestId() {
     let carList = [...flashcardNames];
@@ -102,15 +135,8 @@ function findLastestId() {
     return carList[0].id;
 }
 
-function clearForm() {
-    document.querySelector("#front").value = '';
-    document.querySelector("#back").value = '';
-}
 
-function reset() {
-    document.querySelector("#front").value = "";
-    document.querySelector("#back").value = "";
-}
+
 
 function removeCard(id){
     // let confirm = window.confirm("Are you sure?")
@@ -122,6 +148,8 @@ function removeCard(id){
     renderAllList()
 }   
 
+// RANDOM COLOR
+
 function getRandomColor() {
     var red = Math.floor(Math.random()*255)+0
     var green = Math.floor(Math.random()*70)+90
@@ -129,16 +157,32 @@ function getRandomColor() {
     return `rgb(${red},${green},${blue})`
 }`  `
 
+// ALL LIST
+
+// // LIST MENU
+
+function showListCard() {
+    document.querySelector('#tablebAllList').classList.remove('d-none')
+    document.querySelector('#tableFavoriteList').classList.add('d-none')
+}
+
+function showFavoriteListCards() {
+    document.querySelector('#tablebAllList').classList.add('d-none')
+    document.querySelector('#tableFavoriteList').classList.remove('d-none')
+}
+
+// // ALL LIST
+
 function renderAllList() {
     let tbody = document.getElementById('tbAllList');
     // document.querySelector('.flip-card-front').style.background = 'red';
-    let htmls = flashcardNames.map(function(flashcardNames) {
+    let htmls = flashcardNames.map(function(flashcardName) {
         return `
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>${flashcardNames.id}</td>
-                    <td>${flashcardNames.nameFront}</td>
-                    <td>${flashcardNames.nameBack}</td>
+                    <td>${flashcardName.id}</td>
+                    <td>${flashcardName.nameFront}</td>
+                    <td>${flashcardName.nameBack}</td>
                 </tr>       
 
             `
@@ -148,28 +192,65 @@ function renderAllList() {
     renderFlashcard()
 }
 
-function showListCard() {
-    document.querySelector('#tbAllList').classList.remove('d-none')
-    document.querySelector('#tbFavoriteList').classList.add('d-none')
-}
+// // FAVORITE LIST
 
-function showFavoriteListCard() {
-    document.querySelector('#tbAllList').classList.add('d-none')
-    document.querySelector('#tbFavoriteList').classList.remove('d-none')
-}
 
 function addFavoriteCard(id) {
-
+    
     let card = flashcardNames.find(function(card){
         return card.id == id
     }) 
-
     document.querySelector(`#heart-card-front_${id}`).classList.add('d-none')
     document.querySelector(`#heart-card-back_${id}`).classList.add('d-none')
     document.querySelector(`#red-heart-card-front_${id}`).classList.remove('d-none')
     document.querySelector(`#red-heart-card-back_${id}`).classList.remove('d-none')
-    // document.querySelector('.heart-card').children[0].classList.remove('d-none')
 
+    let foundFavoriteCard = favoriteCards.find(function(cardItem){
+        return cardItem.id == id
+    })
+    if(foundFavoriteCard === undefined){
+        let cardItem = new Card(card.id, card.nameFront, card.nameBack)
+        favoriteCards.push(cardItem);
+        setLocalStorage(favoritecard_key, favoriteCards)
+    }
+    // else{
+    //     alert('This tag has been added')
+    // }
+
+
+    // let tbody = document.getElementById('tbFavoriteList');
+    // let htmls = flashcardNames.map(function(flashcardNames) {
+    //     return `
+    //             <tr_${id}>
+    //                 <td><input type="checkbox"></td>
+    //                 <td>${flashcardNames.id}</td>
+    //                 <td>${flashcardNames.nameFront}</td>
+    //                 <td>${flashcardNames.nameBack}</td>
+    //             </tr_$>       
+
+    //         `
+    // })
+
+    // tbody.innerHTML = htmls.join("");
+    // renderFlashcard()
+    showFavoriteListCard()
+}
+
+function showFavoriteListCard() {
+    let tbody = document.getElementById('tbFavoriteList');
+    let htmls = favoriteCards.map(function(item) {
+        return `
+                <tr>
+                    <td><input type="checkbox"></td>
+                    <td>${item.id}</td>
+                    <td>${item.nameFront}</td>
+                    <td>${item.nameBack}</td>
+                </tr>       
+
+            `
+    })
+
+    tbody.innerHTML = htmls.join("");
 }
 
 function removeFavoriteCard(id) {
@@ -182,17 +263,14 @@ function removeFavoriteCard(id) {
     document.querySelector(`#heart-card-back_${id}`).classList.remove('d-none')
     document.querySelector(`#red-heart-card-front_${id}`).classList.add('d-none')
     document.querySelector(`#red-heart-card-back_${id}`).classList.add('d-none')
-    // document.querySelector('.heart-card').children[0].classList.remove('d-none')
 
 }
 
-
-
-
-
-
-init()
-renderFlashcard()
-renderAllList()
-
-console.log(getRandomColor())
+function documentReady(){
+    init()
+    //renderFlashcard()
+    renderAllList()
+    initFavoriteCard()
+    showFavoriteListCard()
+}
+documentReady()

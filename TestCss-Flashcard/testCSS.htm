@@ -26,7 +26,7 @@
   <!--header area end-->
 
   <!--sidebar start-->
-
+  
   <div class="sidebar">
     <center>
       <img
@@ -36,9 +36,9 @@
     </center>
     <div class="sidebar-selector">
       <a href="#" onclick="showListCard()"><i class="fa-solid fa-list"></i><span>All list</span></a>
-      <a href="#" onclick="showFavoriteListCard()"><i class="fa-solid fa-heart"></i><span>Favorite</span></a>
+      <a href="#" onclick="showFavoriteListCards()"><i class="fa-solid fa-heart"></i><span>Favorite</span></a>
     </div>
-    <table style="border: 1px; color: white;">
+    <table style="border: 1px; color: white;" id="tablebAllList">
       <thead>
         <tr>
           <td><input type="checkbox"></td>
@@ -49,31 +49,25 @@
       </thead>
 
       <tbody id="tbAllList">
+    </table>
+
+    <table style="border: 1px; color: white;" id="tableFavoriteList">
+      <thead>
+        <tr>
+          <td><input type="checkbox"></td>
+          <th >Id</th>
+          <th>Front</th>
+          <th>Back</th>
+        </tr>
+      </thead>
+  
+      <tbody id="tbFavoriteList">
         
       </tbody>
-
-      <tbody id="tbFavoriteList">
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>1</td>
-          <td>한국</td>
-          <td>Hàn Quốc</td>
-        </tr> 
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>2</td>
-          <td>안녕</td>
-          <td>Xin chào</td>
-        </tr> 
-        <tr>
-          <td><input type="checkbox"></td>
-          <td>2</td>
-          <td>안녕</td>
-          <td>Xin chào</td>
-        </tr> 
-      </tbody>
-
+  
     </table>
+
+    
   </div>
 
   <!--sidebar end-->
@@ -98,6 +92,22 @@
     
 
   </div>
+
+  <!-- <table>
+    <thead>
+      <tr>
+        <td><input type="checkbox"></td>
+        <th >Id</th>
+        <th>Front</th>
+        <th>Back</th>
+      </tr>
+    </thead>
+    </tbody>
+
+    <tbody id="tbFavoriteList">
+  </table> -->
+
+  
 
 
 <script src="./testCSS.js"></script>
