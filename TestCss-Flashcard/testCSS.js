@@ -146,6 +146,13 @@ function removeCard(id){
     setLocalStorage(flashcard_key, flashcardNames)
     document.querySelector(`#flip_card_${id}`).remove();
     renderAllList()
+
+    favoriteCards = favoriteCards.filter(function(card){
+        return card.id != id
+    })
+    setLocalStorage(favoritecard_key, favoriteCards)
+    document.querySelector(`#tr_favorite_card_${id}`).remove();
+    showFavoriteListCard();
 }   
 
 // RANDOM COLOR
