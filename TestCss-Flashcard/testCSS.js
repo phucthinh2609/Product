@@ -213,26 +213,7 @@ function addFavoriteCard(id) {
         favoriteCards.push(cardItem);
         setLocalStorage(favoritecard_key, favoriteCards)
     }
-    // else{
-    //     alert('This tag has been added')
-    // }
-
-
-    // let tbody = document.getElementById('tbFavoriteList');
-    // let htmls = flashcardNames.map(function(flashcardNames) {
-    //     return `
-    //             <tr_${id}>
-    //                 <td><input type="checkbox"></td>
-    //                 <td>${flashcardNames.id}</td>
-    //                 <td>${flashcardNames.nameFront}</td>
-    //                 <td>${flashcardNames.nameBack}</td>
-    //             </tr_$>       
-
-    //         `
-    // })
-
-    // tbody.innerHTML = htmls.join("");
-    // renderFlashcard()
+    
     showFavoriteListCard()
 }
 
@@ -240,7 +221,7 @@ function showFavoriteListCard() {
     let tbody = document.getElementById('tbFavoriteList');
     let htmls = favoriteCards.map(function(item) {
         return `
-                <tr>
+                <tr id="tr_favorite_card_${item.id}">
                     <td><input type="checkbox"></td>
                     <td>${item.id}</td>
                     <td>${item.nameFront}</td>
@@ -264,7 +245,22 @@ function removeFavoriteCard(id) {
     document.querySelector(`#red-heart-card-front_${id}`).classList.add('d-none')
     document.querySelector(`#red-heart-card-back_${id}`).classList.add('d-none')
 
+    favoriteCards = favoriteCards.filter(function(card){
+        return card.id != id
+    })
+    setLocalStorage(favoritecard_key, favoriteCards)
+    document.querySelector(`#tr_favorite_card_${id}`).remove();
+    showFavoriteListCard();
+
+    // removeFavoriteCard(id)
+
 }
+
+// function removeFavoriteCard(index){
+//     debugger;
+//     favoriteCards.splice(index, 1);
+//     showFavoriteListCard();
+// }
 
 function documentReady(){
     init()
